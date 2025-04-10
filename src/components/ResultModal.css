@@ -1,0 +1,95 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(16px) saturate(180%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 16px;
+  }
+  
+  .modal-box {
+    margin: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow:
+      0 0 20px rgba(0, 0, 0, 0.2),
+      0 40px 80px rgba(0, 0, 0, 0.35);
+    max-width: 480px;
+    width: 100%;
+    animation: popUp 0.4s ease forwards;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    position: relative;
+  }
+  
+  .modal-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    padding: 2px;
+    background: linear-gradient(135deg, #0ea5e9, #8b5cf6, #facc15);
+    background-size: 200% auto;
+    animation: borderGlow 4s linear infinite;
+    z-index: -1;
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+  }
+  
+  .modal-box h1 {
+    margin-bottom: 20px;
+    font-size: 6vw;
+    max-font-size: 34px;
+    font-weight: 800;
+    background: linear-gradient(to right, #0ea5e9, #9333ea);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerText 4s linear infinite;
+    letter-spacing: 1px;
+  }
+  
+  @media (min-width: 480px) {
+    .modal-box {
+      padding: 48px;
+     
+    }
+  
+    .modal-box h1 {
+      font-size: 32px;
+    }
+  }
+  
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.85) translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  @keyframes borderGlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  @keyframes shimmerText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+  

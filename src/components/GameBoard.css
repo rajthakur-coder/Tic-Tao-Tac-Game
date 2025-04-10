@@ -1,0 +1,143 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(18px) saturate(200%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: fadeIn 0.7s ease-out forwards;
+    padding: 16px;
+  }
+  
+  .modal-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 28px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    animation: popUp 0.6s ease-out forwards;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .modal-box h1 {
+    margin-bottom: 24px;
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 1px;
+    background: linear-gradient(270deg, #0ea5e9, #9333ea, #f43f5e, #facc15, #0ea5e9);
+    background-size: 800% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientText 6s ease infinite;
+    text-shadow:
+      0 0 10px rgba(14, 165, 233, 0.4),
+      0 0 20px rgba(147, 51, 234, 0.4),
+      0 0 30px rgba(244, 63, 94, 0.3);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  @keyframes gradientText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  .game-container {
+    text-align: center;
+    margin-top: 36px;
+    padding: 0 16px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    justify-content: center;
+    animation: fadeIn 1s ease-out;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  
+  .cell {
+    color: white;
+    aspect-ratio: 1 / 1;
+    font-size: 36px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1),
+                0 10px 24px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Rainbow gradient hover effect */
+  .cell:hover {
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #a5f3fc, #c4b5fd, #fbcfe8);
+    color: #0f172a;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35),
+                0 0 10px rgba(14, 165, 233, 0.5);
+  }
+  
+  /* Tap effect for mobile */
+  .cell:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Mobile responsive tweaks */
+  @media (max-width: 480px) {
+    .modal-box {
+      padding: 24px;
+     
+    }
+  
+    .modal-box h1 {
+      font-size: 24px;
+      color: red;
+      
+    }
+  
+    .grid {
+      gap: 10px;
+    }
+  
+    .cell {
+      font-size: 24px;
+      border-radius: 14px;
+    }
+  }
+  
